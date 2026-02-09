@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 
+//EveryPlant must look like this...
 const plantSchema = new mongoose.Schema({
     name: {
         type: String,

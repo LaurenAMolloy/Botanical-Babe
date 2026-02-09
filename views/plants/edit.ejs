@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Plants</title>
+    <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=SN+Pro:ital,wght@0,200..900;1,200..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <main>
+        <div>
+            <h1>Edit Plant</h1>
+            <form action="/plants/<%=plant._id %>?_method=PUT" method="POST">
+                <label for="name">Name</label>
+                <input type="text" placeholder="Enter plant name" id="name" name="name" value="<%=plant.name%>">
+                <label for="price">Price</label>
+                <input type="number" placeholder="Enter a price" id="price" name="price" value="<%=plant.price%>">
+                <label for="name">Category</label>
+                <select id="category" name="category">
+                    <% for(let category of categories){ %>
+                        <option value="<%=category%>" <%=plant.category===category ? 'selected' : "" %>>
+                            <%=category%>
+                        </option>
+                        <% } %>
+                </select>
+                <label for="name">Water</label>
+                <input type="text" placeholder="Eg.2-3 weeks" id="water" name="water">
+                <button>Submit</button>
+            </form>
+            <a href="/plants/<%=plant._id%>">Cancel</a>
+        </div>
+    </main>
+</body>
+
+</html>
