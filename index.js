@@ -1,7 +1,9 @@
 const express = require('express');
 const app = express();
+
 const path = require('path');
 const mongoose = require('mongoose');
+
 const methodOverride = require('method-override')
 
 
@@ -19,6 +21,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/plantApp')
 
 //When I render a view look in the views folder
 app.set('views', path.join(__dirname, 'views'));
+
 //What file type is used for rendering
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
@@ -35,15 +38,14 @@ const categories = [
     'succulent'
 ]
 
+//REST 
+//Represtational State Transfer
 
 //Static routes first
-//Retreive data using GET
-//We need get the data and pass it to the related views page
 app.get('/plants', async (req, res) => {
-    //Query the model
-    //Promise based
+    //Use Plant Model to fetch all plants!
     const plants = await Plant.find({})
-    //console.log(plants)
+    //Controller logic
     res.render('plants/index', { plants })
 });
 

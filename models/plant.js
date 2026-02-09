@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 
-//EveryPlant must look like this...
+//Define the Shape of the Plant
+//Rules to follow!
 const plantSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -24,6 +25,9 @@ const plantSchema = new mongoose.Schema({
     } 
 })
 
+//Using Mongoose create a Model called Plant
 const Plant = mongoose.model('Plant', plantSchema);
+
+//Plant.create()
 
 module.exports = Plant

@@ -1,35 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
+<%- include('../partials/head') %>
+    <%- include('../partials/nav') %>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Plants</title>
-    <link rel="stylesheet" href="/styles/styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=SN+Pro:ital,wght@0,200..900;1,200..900&display=swap"
-        rel="stylesheet">
-</head>
+        <body>
+            <main>
+                <h1>Botanical Babe</h1>
+                <h2>Here is a list of plants we stock:</h2>
+                <ul class="plant-list">
+                    <% for(let p of plants) { %>
+                        <li class="plant-card">
+                            <span class="plant-name">
+                                <%= p.name %>
+                            </span>
+                            <a class="details-link" href="/plants/<%= p._id %>">More details →</a>
+                        </li>
+                        <% } %>
+                </ul>
+                <a href="/plants/new">Add a Plant</a>
+            </main>
+        </body>
 
-<body>
-    <main>
-        <h1>Botanical Babe</h1>
-        <h2>Here is a list of plants we stock:</h2>
-        <ul class="plant-list">
-            <% for(let p of plants) { %>
-                <li class="plant-card">
-                    <span class="plant-name">
-                        <%= p.name %>
-                    </span>
-                    <a class="details-link" href="/plants/<%= p._id %>">More details →</a>
-                </li>
-                <% } %>
-        </ul>
-        <a href="/plants/new">Add a Plant</a>
-    </main>
-</body>
-
-</html>
+        </html>

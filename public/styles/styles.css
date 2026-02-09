@@ -230,3 +230,8 @@ main>a:last-child:hover {
     gap: 0.75rem;
     margin-top: 1.5rem;
 }
+
+.fa-leaf {
+    color: #3a5a40;
+    padding-left: 10px;
+}
