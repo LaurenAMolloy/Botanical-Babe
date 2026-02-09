@@ -17,19 +17,47 @@
 <body>
     <main>
         <div>
-            <h1>Add A New Plant</h1>
-            <form action="/plants" method="POST">
-                <label for="name">Name</label>
-                <input type="text" placholder="Enter plant name" id="name" name="name">
-                <label for="price">Price</label>
-                <input type="number" placholder="Enter a price" id="price" name="price">
-                <label for="name">Category</label>
-                <select type="text" placholder="indoor" id="category" name="category">
-                </select>
-                <label for="name">Water</label>
-                <input type="text" placholder="Eg.2-3 weeks" id="water" name="water">
-                <button>Submit</button>
-            </form>
+            <h1>Add A New Plant To Your Inventory</h1>
+            <main>
+                <div class="form-wrapper">
+                    <h1>Add a New Plant</h1>
+
+                    <form class="plant-form" action="/plants" method="POST">
+
+                        <div class="field">
+                            <label for="name">Name</label>
+                            <input type="text" placeholder="Enter plant name" id="name" name="name">
+                        </div>
+
+                        <div class="field">
+                            <label for="price">Price</label>
+                            <input type="number" placeholder="Enter a price" id="price" name="price">
+                        </div>
+
+                        <div class="field">
+                            <label for="category">Category</label>
+                            <select id="category" name="category">
+                                <option value="">Select a category</option>
+                                <option value="Indoor">Indoor</option>
+                                <option value="Outdoor">Outdoor</option>
+                                <option value="Succulent">Succulent</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label for="water">Water</label>
+                            <input type="text" placeholder="e.g. every 2–3 weeks" id="water" name="water">
+                        </div>
+
+                        <div class="form-actions">
+                            <button class="btn btn-primary">Add Plant</button>
+                            <a class="btn btn-secondary" href="/plants">Cancel</a>
+                        </div>
+
+                    </form>
+                </div>
+            </main>
+
         </div>
     </main>
 </body>

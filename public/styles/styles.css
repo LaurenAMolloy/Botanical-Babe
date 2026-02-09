@@ -2,38 +2,231 @@ body {
     font-family: "SN Pro", sans-serif;
 }
 
-table {
-    border-collapse: collapse;
-    border: 2px solid rgb(140 140 140);
-    font-family: sans-serif;
-    font-size: 0.8rem;
-    letter-spacing: 1px;
+/* RESET-ish */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-
-thead,
-tfoot {
-    background-color: rgb(228 240 245);
+body {
+    font-family: "SN Pro", system-ui, sans-serif;
+    background: #f6f8f5;
+    color: #2f3e34;
+    line-height: 1.6;
 }
 
-th,
-td {
-    border: 1px solid rgb(160 160 160);
-    padding: 8px 10px;
+/* Layout */
+main {
+    max-width: 700px;
+    margin: 4rem auto;
+    padding: 2.5rem;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
 }
 
-td:last-of-type {
-    text-align: center;
+/* Headings */
+h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #3a5a40;
+    letter-spacing: -0.5px;
 }
 
-tbody>tr:nth-of-type(even) {
-    background-color: rgb(237 238 242);
+h2 {
+    margin-top: 0.75rem;
+    margin-bottom: 2rem;
+    font-weight: 400;
+    color: #5c6f64;
 }
 
-tfoot th {
-    text-align: right;
+/* Plant list */
+.plant-list {
+    list-style: none;
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
 }
 
-tfoot td {
-    font-weight: bold;
+.plant-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.25rem;
+    background: #edf4ee;
+    border-radius: 14px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.plant-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Plant name */
+.plant-name {
+    font-weight: 600;
+    font-size: 1.05rem;
+}
+
+/* Links */
+a,
+button {
+    text-decoration: none;
+    color: #588157;
+    font-weight: 500;
+}
+
+a:hover {
+    color: #3a5a40;
+}
+
+/* Add plant CTA */
+main>a:last-child {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: #588157;
+    color: #ffffff;
+    border-radius: 999px;
+    font-weight: 600;
+    transition: background 0.2s ease, transform 0.15s ease;
+}
+
+main>a:last-child:hover {
+    background: #3a5a40;
+    transform: translateY(-1px);
+}
+
+/* Action buttons container */
+.actions {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+/* Base button */
+.btn {
+    appearance: none;
+    border: none;
+    border-radius: 999px;
+    padding: 0.65rem 1.4rem;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        background-color 0.2s ease;
+}
+
+/* Secondary (All Plants) */
+.btn-secondary {
+    background: #edf4ee;
+    color: #3a5a40;
+}
+
+.btn-secondary:hover {
+    background: #ddebe0;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* Primary (Edit) */
+.btn-primary {
+    background: #588157;
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background: #3a5a40;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Danger (Delete) */
+.btn-danger {
+    background: #f6e3e1;
+    color: #8c2f2f;
+}
+
+.btn-danger:hover {
+    background: #e9bcbc;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* Make form behave inline */
+.actions form {
+    display: inline;
+}
+
+/* Form wrapper */
+.form-wrapper {
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+/* Form layout */
+.plant-form {
+    display: grid;
+    gap: 1.4rem;
+    margin-top: 2rem;
+}
+
+/* Field group */
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+/* Labels */
+.field label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #4f6b5a;
+}
+
+/* Inputs & select */
+.field input,
+.field select {
+    font-family: inherit;
+    padding: 0.7rem 0.9rem;
+    border-radius: 10px;
+    border: 1px solid #d3e1d8;
+    background: #f7faf8;
+    font-size: 0.95rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.field input::placeholder {
+    color: #9aaea3;
+}
+
+/* Focus states */
+.field input:focus,
+.field select:focus {
+    outline: none;
+    border-color: #588157;
+    box-shadow: 0 0 0 3px rgba(88, 129, 87, 0.2);
+    background: #ffffff;
+}
+
+/* Select arrow cleanup */
+.field select {
+    cursor: pointer;
+}
+
+/* Form actions */
+.form-actions {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
 }
