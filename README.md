@@ -30,8 +30,25 @@ https://github.com/user-attachments/assets/673820ec-47b4-42f8-9326-17c3cacc1f71
 - Mongoose
 - Bootstrap
 - Static CSS
+- HTML templates (EJS)
 
-HTML templates (EJS)
+## 📌 RESTFul Routes
+🚦 RESTful Routes
+- Action	HTTP Verb	Route	Description
+- Index	GET	/plants	Show all plants
+- New	GET	/plants/new	Form to create a new plant
+- Create	POST	/plants	Add new plant to database
+- Show	GET	/plants/:id	Show details for one plant
+- Edit	GET	/plants/:id/edit	Form to edit a plant
+- Update	PUT	/plants/:id	Update a plant
+- Delete	DELETE	/plants/:id	Remove a plant
+
+## 🚀 Future Improvements
+-User authentication & authorization
+-Image uploads with Cloudinary
+-Search and filter functionality
+-Flash messages for success/errors
+-Deployment to Render or Railway
 
 ## 📁 Project Structure
 
@@ -57,21 +74,4 @@ botanical-babe/
 ├── index.js. / # Mongoose schemas
 ├── package.json
 └── README.md
-
-## 📌 RESTFul Routes
-🚦 RESTful Routes
-- Action	HTTP Verb	Route	Description
-- Index	GET	/plants	Show all plants
-- New	GET	/plants/new	Form to create a new plant
-- Create	POST	/plants	Add new plant to database
-- Show	GET	/plants/:id	Show details for one plant
-- Edit	GET	/plants/:id/edit	Form to edit a plant
-- Update	PUT	/plants/:id	Update a plant
-- Delete	DELETE	/plants/:id	Remove a plant
-
-## 🚀 Future Improvements
--User authentication & authorization
--Image uploads with Cloudinary
--Search and filter functionality
--Flash messages for success/errors
--Deployment to Render or Railway
+```
