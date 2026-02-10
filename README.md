@@ -3,6 +3,12 @@
 Botanical Babe is a full-stack CRUD web application built with Express.js and MongoDB, designed to manage botanical-themed content (plants, products, or entries) with a clean, responsive UI. The app follows RESTful routing principles, uses Mongoose for data modeling, and is styled with Bootstrap alongside custom static CSS.
 
 ---
+## Models Explanation
+
+
+https://github.com/user-attachments/assets/673820ec-47b4-42f8-9326-17c3cacc1f71
+
+
 
 ## ✨ Features
 
