@@ -44,11 +44,11 @@ https://github.com/user-attachments/assets/673820ec-47b4-42f8-9326-17c3cacc1f71
 - Delete	DELETE	/plants/:id	Remove a plant
 
 ## 🚀 Future Improvements
--User authentication & authorization
--Image uploads with Cloudinary
--Search and filter functionality
--Flash messages for success/errors
--Deployment to Render or Railway
+- User authentication & authorization
+- Image uploads with Cloudinary
+- Search and filter functionality
+- Flash messages for success/errors
+- Deployment to Render or Railway
 
 ## 📁 Project Structure
 
