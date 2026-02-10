@@ -35,8 +35,6 @@ botanical-babe/
 ├── models/ # Mongoose schemas
 │ └── plant.js
 │
-├── routes/ # RESTful route files
-│ └── plants.js
 │
 ├── public/ # Static assets
 │ ├── css/
@@ -50,7 +48,7 @@ botanical-babe/
 │ ├── edit.ejs
 │ └── layout.ejs
 │
-├── index.js.
+├── index.js. / # Mongoose schemas
 ├── package.json
 └── README.md
 
