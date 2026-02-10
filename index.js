@@ -40,13 +40,21 @@ const categories = [
 
 //REST 
 //Represtational State Transfer
+//GET 
+//POST
+//PUT/PATCH
+//DELETE
 
 //Static routes first
 app.get('/plants', async (req, res) => {
-    //Use Plant Model to fetch all plants!
-    const plants = await Plant.find({})
-    //Controller logic
-    res.render('plants/index', { plants })
+    const { category } = req.query;
+    if(category) {
+        const plants = await Plant.find({ category})
+        res.render('plants/index', { plants, category })
+    } else {
+        const plants = await Plant.find({})
+        res.render('plants/index', { plants, category: "All" })
+    }
 });
 
 app.get('/plants/new', (req, res) => {
@@ -89,6 +97,11 @@ app.delete('/plants/:id', async (req,res) => {
     const deletedProduct = await Plant.findByIdAndDelete(id);
     res.redirect('/plants');
 })
+
+//How do we structure the URL for filter?
+// /categories/dairy
+// /plants?category=dairy
+
 
 app.listen(8000, () => {
     console.log('LISTENING ON PORT 8000')

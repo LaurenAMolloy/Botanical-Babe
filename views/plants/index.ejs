@@ -4,7 +4,7 @@
         <body>
             <main>
                 <h1>Botanical Babe</h1>
-                <h2>Here is a list of plants we stock:</h2>
+                <h2>Here is a list of <%= category %> plants we stock:</h2>
                 <ul class="plant-list">
                     <% for(let p of plants) { %>
                         <li class="plant-card">
@@ -16,6 +16,9 @@
                         <% } %>
                 </ul>
                 <a href="/plants/new">Add a Plant</a>
+                <%if(category !=='All' ) {%>
+                    <a href="/plants">All Plants</a>
+                    <% } %>
             </main>
         </body>
 

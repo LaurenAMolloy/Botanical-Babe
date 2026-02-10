@@ -12,7 +12,10 @@
                             Price: $ <%= plant.price %>
                         </p>
                         <p>
-                            Category: <%= plant.category %>
+                            Category: <a href="/plants?category=<%= plant.category %>">
+                                <%= plant.category %>
+                            </a>
+
                         </p>
                         <p>
                             Water: <%= plant.water %>
