@@ -71,7 +71,7 @@ botanical-babe/
 │ ├── edit.ejs
 │ └── layout.ejs
 │
-├── index.js. / # Mongoose schemas
+├── index.js. / # Routes
 ├── package.json
 └── README.md
 ```
