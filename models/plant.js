@@ -22,6 +22,10 @@ const plantSchema = new mongoose.Schema({
     },
     water: {
         type: String
+    },
+    shop : {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Shop'
     } 
 })
 

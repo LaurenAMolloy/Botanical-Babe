@@ -30,6 +30,15 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }) )
 app.use(methodOverride('_method'))
 
+//Shops Routes
+app.get('/shops/new', (req, res) => {
+    res.render('shops/new')
+});
+
+app.post('/shops', async (req, res) => {
+    res.send(req.body)
+});
+
 const categories = [
     'indoor',
     'outdoor',

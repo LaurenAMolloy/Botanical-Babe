@@ -1,0 +1,40 @@
+<%- include('../partials/head') %>
+    <%- include('../partials/nav') %>
+
+        <body>
+            <main>
+                <div>
+                    <main>
+                        <div class="form-wrapper">
+                            <h1>Add A Shop</h1>
+                            <form class="plant-form" action="/shops" method="POST">
+
+                                <div class="field">
+                                    <label for="name">Shop Name</label>
+                                    <input type="text" placeholder="Enter plant name" id="name" name="name">
+                                </div>
+
+                                <div class="field">
+                                    <label for="town">Town</label>
+                                    <input type="text" placeholder="Enter a town" id="town" name="town">
+                                </div>
+
+                                <div class="field">
+                                    <label for="town">Email</label>
+                                    <input type="email" placeholder="Enter an email" id="email" name="email">
+                                </div>
+
+                                <div class="form-actions">
+                                    <button class="btn btn-primary">Add Shops</button>
+                                    <a class="btn btn-secondary" href="/shops">Cancel</a>
+                                </div>
+
+                            </form>
+                        </div>
+                    </main>
+
+                </div>
+            </main>
+        </body>
+
+        </html>
