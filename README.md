@@ -8,6 +8,11 @@ Botanical Babe is a full-stack CRUD web application built with Express.js and Mo
 
 https://github.com/user-attachments/assets/673820ec-47b4-42f8-9326-17c3cacc1f71
 
+## GET Explanation
+
+
+https://github.com/user-attachments/assets/10c3578b-07b1-4b6c-bf1e-da6fdcd41700
+
 
 
 ## ✨ Features
