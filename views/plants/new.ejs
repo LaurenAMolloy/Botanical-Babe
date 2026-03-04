@@ -6,8 +6,11 @@
                 <div>
                     <main>
                         <div class="form-wrapper">
-                            <h1>Add A New Plant To Your Inventory</h1>
-                            <form class="plant-form" action="/plants" method="POST">
+                            <h1>
+                                <%=shop.name%>
+                            </h1>
+                            <h2>Add A New Plant To Your Inventory</h2>
+                            <form class="plant-form" action="/shops/<%= shop._id %>/plants" method="POST">
 
                                 <div class="field">
                                     <label for="name">Name</label>
@@ -37,6 +40,7 @@
                                 <div class="form-actions">
                                     <button class="btn btn-primary">Add Plant</button>
                                     <a class="btn btn-secondary" href="/plants">Cancel</a>
+                                    <a class="btn btn-secondary" href="/shops/<%=shop._id%>">Back to Shop</a>
                                 </div>
 
                             </form>

@@ -8,9 +8,9 @@
                 <ul class="plant-list">
                     <% for(let s of shops) { %>
                         <li class="plant-card">
-                            <span class="plant-name">
+                            <a href="/shops/<%=s._id%>" class="plant-name">
                                 <%= s.name %>
-                            </span>
+                            </a>
                         </li>
                         <% } %>
                 </ul>

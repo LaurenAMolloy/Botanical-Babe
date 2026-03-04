@@ -20,6 +20,9 @@
                         <p>
                             Water: <%= plant.water %>
                         </p>
+                        <a href="/shops/<%=plant.shop._id %>">
+                            Stocked at: <%= plant.shop.name %>
+                        </a>
                     </div>
                     <div class="actions">
                         <a href="/plants" class="btn btn-secondary">All Plants</a>

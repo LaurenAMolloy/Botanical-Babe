@@ -32,7 +32,6 @@ app.use(express.urlencoded({ extended: true }) )
 app.use(methodOverride('_method'))
 
 //Shops Routes
-
 app.get('/shops', async(req, res) => {
     const shops = await Shop.find({});
     res.render('shops/index', { shops })
@@ -42,9 +41,16 @@ app.get('/shops/new', (req, res) => {
     res.render('shops/new')
 });
 
-app.get('/shops/:id', async (res, req) => {
-    const shop = await Shop.findById(id)
+app.get('/shops/:id', async (req, res) => {
+    const shop = await Shop.findById(req.params.id).populate('plants');
+    res.render('shops/show', { shop })
 });
+
+app.delete('/shops/:id', async (req, res) => {
+    console.log('deleting!')
+    const shop = await Shop.findByIdAndDelete(req.params.id);
+    res.redirect('/shops')
+})
 
 //Add Error Handlers
 app.post('/shops', async (req, res) => {
@@ -52,6 +58,30 @@ app.post('/shops', async (req, res) => {
     await shop.save();
     res.redirect('/shops');
 });
+
+app.get('/shops/:id/plants/new', async(req, res) => {
+    const { id } = req.params;
+    const shop = await Shop.findById(id)
+    res.render('plants/new', { categories, shop });
+});
+
+app.post('/shops/:id/plants', async (req, res) => {
+    const { id } = req.params
+    const shop = await Shop.findById(id);
+    const { name, price, category } = req.body
+    const plant = new Plant({ name, price, category, water });
+
+    //Connect the product and the shop
+    shop.plants.push(plant);
+    plant.shop = shop;
+
+    await shop.save();
+    await plant.save();
+    
+    //Send the shop
+    res.redirect(`/shops/${id}`);
+});
+
 
 //Products Routes
 const categories = [
@@ -97,7 +127,7 @@ app.post('/plants', async (req, res) => {
 app.get('/plants/:id', async(req, res) => {
     //find product based on unique id
     const { id } = req.params;
-    const plant = await Plant.findById(id);
+    const plant = await Plant.findById(id).populate('shop', 'name');
     console.log(plant)
     res.render('plants/show', { plant }) 
 })

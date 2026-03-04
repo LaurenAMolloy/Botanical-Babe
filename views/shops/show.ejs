@@ -1,0 +1,42 @@
+<%- include('../partials/head') %>
+    <%- include('../partials/nav') %>
+
+        <body>
+            <main>
+                <section>
+                    <div>
+                        <h2>
+                            Branch Name: <%= shop.name %>
+                        </h2>
+                        <p>
+                            Location: <%= shop.town %>
+                        </p>
+                        <p>
+                            Email: <%= shop.email %>
+                        </p>
+                    </div>
+                    <div>
+                        <h3>Plants we stock at <%= shop.name %>
+                        </h3>
+                        <ul>
+                            <% for(let plant of shop.plants) {%>
+                                <li>
+                                    <a href="/plants/<%=plant._id%>">
+                                        <%=plant.name%>
+                                    </a>
+                                </li>
+                                <% } %>
+                        </ul>
+                    </div>
+                    <div class="actions">
+                        <a href="/shops/<%=shop._id%>/plants/new">Add Plant</a>
+                        <a href="/plants" class="btn btn-secondary">All Shops</a>
+                        <form action="/shops/<%=shop._id%>?_method=DELETE" method="POST">
+                            <button>Delete</button>
+                        </form>
+                    </div>
+                </section>
+            </main>
+        </body>
+
+        </html>
