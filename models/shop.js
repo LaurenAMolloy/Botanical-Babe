@@ -3,7 +3,7 @@ const { Schema } = mongoose;
 
 const shopSchema = new Schema({
     name: {
-        typeof: String,
+        type: String,
         required: [true, 'Shop must have a name']
     },
     town: {

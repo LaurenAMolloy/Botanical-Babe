@@ -8,6 +8,7 @@ const methodOverride = require('method-override')
 
 
 const Plant = require('./models/plant');
+const Shop = require('./models/shop');
 
 //Connect to db
 mongoose.connect('mongodb://127.0.0.1:27017/plantApp')
@@ -31,14 +32,28 @@ app.use(express.urlencoded({ extended: true }) )
 app.use(methodOverride('_method'))
 
 //Shops Routes
+
+app.get('/shops', async(req, res) => {
+    const shops = await Shop.find({});
+    res.render('shops/index', { shops })
+});
+
 app.get('/shops/new', (req, res) => {
     res.render('shops/new')
 });
 
-app.post('/shops', async (req, res) => {
-    res.send(req.body)
+app.get('/shops/:id', async (res, req) => {
+    const shop = await Shop.findById(id)
 });
 
+//Add Error Handlers
+app.post('/shops', async (req, res) => {
+    const shop = new Shop(req.body);
+    await shop.save();
+    res.redirect('/shops');
+});
+
+//Products Routes
 const categories = [
     'indoor',
     'outdoor',
