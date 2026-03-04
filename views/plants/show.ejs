@@ -20,15 +20,20 @@
                         <p>
                             Water: <%= plant.water %>
                         </p>
-                        <a href="/shops/<%=plant.shop._id %>">
-                            Stocked at: <%= plant.shop.name %>
-                        </a>
+                        <% if (plant.shop) { %>
+                            <a href="/shops/<%= plant.shop._id %>">
+                                Stocked at: <%= plant.shop.name %>
+                            </a>
+                            <% } else { %>
+                                <p>Not currently stocked in any shop</p>
+                                <% } %>
                     </div>
                     <div class="actions">
                         <a href="/plants" class="btn btn-secondary">All Plants</a>
                         <a href="/plants/<%= plant._id %>/edit" class="btn btn-primary">Edit</a>
+                        <a href="/plants/<%= plant._id %>/assign" class="btn btn-primary">Add to Shop</a>
 
-                        <form action="/plants/<%= plant._id %>?_method=DELETE" method="post">
+                        <form action=" /plants/<%=plant._id %>?_method=DELETE" method="post">
                             <button class="btn btn-danger">Delete</button>
                         </form>
                     </div>

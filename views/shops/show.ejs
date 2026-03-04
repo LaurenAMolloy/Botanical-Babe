@@ -18,6 +18,7 @@
                     <div>
                         <h3>Plants we stock at <%= shop.name %>
                         </h3>
+                        <h5>Currently there are <%= shop.plants.length %> plants in stock</h5>
                         <ul>
                             <% for(let plant of shop.plants) {%>
                                 <li>
@@ -29,10 +30,10 @@
                         </ul>
                     </div>
                     <div class="actions">
-                        <a href="/shops/<%=shop._id%>/plants/new">Add Plant</a>
+                        <a href="/shops/<%=shop._id%>/plants/new" class="btn btn-primary">Add Plant</a>
                         <a href="/plants" class="btn btn-secondary">All Shops</a>
                         <form action="/shops/<%=shop._id%>?_method=DELETE" method="POST">
-                            <button>Delete</button>
+                            <button class="btn btn-danger">Delete</button>
                         </form>
                     </div>
                 </section>

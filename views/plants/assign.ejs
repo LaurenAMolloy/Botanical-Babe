@@ -1,0 +1,15 @@
+<%- include('../partials/head') %>
+    <%- include('../partials/nav') %>
+        <h1>Assign <%= plant.name %> to a Shop</h1>
+
+        <form action="/plants/<%= plant._id %>/assign" method="POST">
+            <select name="shopId">
+                <% for(let shop of shops) { %>
+                    <option value="<%= shop._id %>">
+                        <%= shop.name %>
+                    </option>
+                    <% } %>
+            </select>
+
+            <button>Assign</button>
+        </form>

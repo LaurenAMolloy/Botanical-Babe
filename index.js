@@ -139,6 +139,28 @@ app.get('/plants/:id/edit', async(req, res) => {
     res.render('plants/edit', { plant, categories });
 })
 
+//add plant to a shop
+app.get('/plants/:id/assign', async (req, res) =>{
+    const plant = await Plant.findById(req.params.id);
+    const shops = await Shop.find({});
+    res.render('plants/assign', { plant, shops })
+})
+
+//Post
+app.post('/plants/:id/assign', async (req, res) => {
+    const plant = await Plant.findById(req.params.id);
+    const shop = await Shop.findById(req.body.shopId);
+
+    //connect the two
+    plant.shop = shop._id;
+    shop.plants.push(plant._id);
+
+    await plant.save();
+    await shop.save();
+
+    res.redirect(`/plants/${plant._id}`)
+})
+
 app.put('/plants/:id', async(req, res) => {
     const { id } = req.params;
     const plant = await Plant.findByIdAndUpdate(id, req.body, {runValidators: true, new: true})
