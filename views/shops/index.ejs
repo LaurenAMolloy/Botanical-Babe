@@ -3,17 +3,18 @@
 
         <body>
             <main>
-                <h1>Botanical Babe Branches</h1>
-                <h2>Here is a list of shops</h2>
-                <ul class="plant-list">
-                    <% for(let s of shops) { %>
-                        <li class="plant-card">
-                            <a href="/shops/<%=s._id%>" class="plant-name">
-                                <%= s.name %>
-                            </a>
-                        </li>
-                        <% } %>
-                </ul>
+                <%= messages %>
+                    <h1>Botanical Babe Branches</h1>
+                    <h2>Here is a list of shops</h2>
+                    <ul class="plant-list">
+                        <% for(let s of shops) { %>
+                            <li class="plant-card">
+                                <a href="/shops/<%=s._id%>" class="plant-name">
+                                    <%= s.name %>
+                                </a>
+                            </li>
+                            <% } %>
+                    </ul>
             </main>
         </body>
 

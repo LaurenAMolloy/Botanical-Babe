@@ -3,6 +3,17 @@ const app = express();
 
 const path = require('path');
 const mongoose = require('mongoose');
+const session = require('express-session');
+const flash = require('connect-flash');
+
+const sessionOptions = {
+  secret:'your-secret',
+  resave:false,
+  saveUninitialized:false
+}
+
+app.use(session(sessionOptions));
+app.use(flash());
 
 const methodOverride = require('method-override')
 
@@ -28,13 +39,22 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
 //Middleware
-app.use(express.urlencoded({ extended: true }) )
-app.use(methodOverride('_method'))
+app.use(express.urlencoded({ extended: true }) );
+app.use(methodOverride('_method'));
+
+//Products Routes
+const categories = [
+    'indoor',
+    'outdoor',
+    'trailing',
+    'flowering',
+    'succulent'
+]
 
 //Shops Routes
 app.get('/shops', async(req, res) => {
     const shops = await Shop.find({});
-    res.render('shops/index', { shops })
+    res.render('shops/index', { shops, messages: req.flash('success') })
 });
 
 app.get('/shops/new', (req, res) => {
@@ -56,6 +76,7 @@ app.delete('/shops/:id', async (req, res) => {
 app.post('/shops', async (req, res) => {
     const shop = new Shop(req.body);
     await shop.save();
+    req.flash('success', 'Successfully made a new farm');
     res.redirect('/shops');
 });
 
@@ -68,7 +89,7 @@ app.get('/shops/:id/plants/new', async(req, res) => {
 app.post('/shops/:id/plants', async (req, res) => {
     const { id } = req.params
     const shop = await Shop.findById(id);
-    const { name, price, category } = req.body
+    const { name, price, category, water } = req.body
     const plant = new Plant({ name, price, category, water });
 
     //Connect the product and the shop
@@ -81,16 +102,6 @@ app.post('/shops/:id/plants', async (req, res) => {
     //Send the shop
     res.redirect(`/shops/${id}`);
 });
-
-
-//Products Routes
-const categories = [
-    'indoor',
-    'outdoor',
-    'trailing',
-    'flowering',
-    'succulent'
-]
 
 //REST 
 //Represtational State Transfer
@@ -112,7 +123,7 @@ app.get('/plants', async (req, res) => {
 });
 
 app.get('/plants/new', (req, res) => {
-    res.render('plants/new', { categories })
+    res.render('plants/new', { categories, shop: null })
 });
 
 app.post('/plants', async (req, res) => {
@@ -159,26 +170,22 @@ app.post('/plants/:id/assign', async (req, res) => {
     await shop.save();
 
     res.redirect(`/plants/${plant._id}`)
-})
+});
 
 app.put('/plants/:id', async(req, res) => {
     const { id } = req.params;
     const plant = await Plant.findByIdAndUpdate(id, req.body, {runValidators: true, new: true})
     //Do not respond directly from put or patch
     res.redirect(`/plants/${plant._id}`)
-})
+});
 
 app.delete('/plants/:id', async (req,res) => {
     const { id } = req.params;
     const deletedProduct = await Plant.findByIdAndDelete(id);
     res.redirect('/plants');
-})
-
-//How do we structure the URL for filter?
-// /categories/dairy
-// /plants?category=dairy
+});
 
 
 app.listen(8000, () => {
     console.log('LISTENING ON PORT 8000')
-})
+});

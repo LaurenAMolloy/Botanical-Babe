@@ -6,44 +6,56 @@
                 <div>
                     <main>
                         <div class="form-wrapper">
-                            <h1>
-                                <%=shop.name%>
-                            </h1>
-                            <h2>Add A New Plant To Your Inventory</h2>
-                            <form class="plant-form" action="/shops/<%= shop._id %>/plants" method="POST">
+                            <% if (shop) { %>
+                                <h1>
+                                    <%= shop.name %>
+                                </h1>
+                                <h2>Add A New Plant To Your Inventory</h2>
+                                <% } else { %>
+                                    <h1>Add A New Plant</h1>
+                                    <% } %>
+                                        <h2>Add A New Plant To Your Inventory</h2>
+                                        <form class="plant-form"
+                                            action="<%= shop ? `/shops/${shop._id}/plants` : '/plants' %>"
+                                            method="POST">
 
-                                <div class="field">
-                                    <label for="name">Name</label>
-                                    <input type="text" placeholder="Enter plant name" id="name" name="name">
-                                </div>
+                                            <div class="field">
+                                                <label for="name">Name</label>
+                                                <input type="text" placeholder="Enter plant name" id="name" name="name">
+                                            </div>
 
-                                <div class="field">
-                                    <label for="price">Price</label>
-                                    <input type="number" placeholder="Enter a price" id="price" name="price">
-                                </div>
+                                            <div class="field">
+                                                <label for="price">Price</label>
+                                                <input type="number" placeholder="Enter a price" id="price"
+                                                    name="price">
+                                            </div>
 
-                                <div class="field">
-                                    <label for="category">Category</label>
-                                    <select id="category" name="category">
-                                        <option value="">Select a category</option>
-                                        <option value="Indoor">Indoor</option>
-                                        <option value="Outdoor">Outdoor</option>
-                                        <option value="Succulent">Succulent</option>
-                                    </select>
-                                </div>
+                                            <div class="field">
+                                                <label for="category">Category</label>
+                                                <select id="category" name="category">
+                                                    <option value="">Select a category</option>
+                                                    <option value="Indoor">Indoor</option>
+                                                    <option value="Outdoor">Outdoor</option>
+                                                    <option value="Succulent">Succulent</option>
+                                                </select>
+                                            </div>
 
-                                <div class="field">
-                                    <label for="water">Water</label>
-                                    <input type="text" placeholder="e.g. every 2–3 weeks" id="water" name="water">
-                                </div>
+                                            <div class="field">
+                                                <label for="water">Water</label>
+                                                <input type="text" placeholder="e.g. every 2–3 weeks" id="water"
+                                                    name="water">
+                                            </div>
 
-                                <div class="form-actions">
-                                    <button class="btn btn-primary">Add Plant</button>
-                                    <a class="btn btn-secondary" href="/plants">Cancel</a>
-                                    <a class="btn btn-secondary" href="/shops/<%=shop._id%>">Back to Shop</a>
-                                </div>
+                                            <div class="form-actions">
+                                                <button class="btn btn-primary">Add Plant</button>
+                                                <a class="btn btn-secondary" href="/plants">Cancel</a>
+                                                <% if (shop) { %>
+                                                    <a class="btn btn-secondary" href="/shops/<%= shop._id %>">Back to
+                                                        Shop</a>
+                                                    <% } %>
+                                            </div>
 
-                            </form>
+                                        </form>
                         </div>
                     </main>
 
